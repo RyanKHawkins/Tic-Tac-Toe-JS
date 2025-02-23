@@ -1,0 +1,140 @@
+:root {
+    /* Color pallete from coolor.co */
+    --color1: #04395E;
+    --color2: #D5896F;
+    --color3: #70A288;
+    --color4: #DAB785;
+    --color5: #031D44;
+    
+    --border-radius: 5%;
+    --bs-blur: 20px;
+}
+* {
+    user-select: none;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: var(--color1);
+}
+
+main {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+/*     border: 1px dashed; */
+    border-radius: 5%;
+    box-shadow: 0 0 var(--bs-blur);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 400px;
+    height: 400px;
+    background: var(--color2)
+}
+
+h2 {
+    text-align: center;
+}
+
+#board {
+    border: 5px solid var(--color3);
+    border-radius: 5%;
+    box-shadow: 0 0 calc(var(--bs-blur)/2), inset 0 0 calc(var(--bs-blur)/3) black;
+    display: flex;
+    flex-direction: column;
+/*     justify-content: center; */
+    align-items: center;
+}
+
+#message-display {
+    color: var(--color5);
+/*     font-weight: bold; */
+    font-size: 20px
+}
+
+#start-button {
+    margin: 7.5px;
+}
+.alert-button {
+    animation-name: alert;
+    animation-duration: 0.75s;
+    transition: all ease-in 0.5s;
+}
+@keyframes alert {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+        font-weight: bold;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.placed {
+    animation-name: bold-bounce;
+    animation-duration: 0.5s;
+    transition: all ease-in 0.5s
+}
+
+@keyframes bold-bounce {
+    0% {
+/*         color: var(--color5); */
+    }
+    50% {
+        font-weight: bold;
+/*         color: gray; */
+    }
+    100% {
+        font-weight: initial
+    }
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    font-size: 25px;
+    border: solid 1px gray;
+    background: var(--color4);
+    color: var(--color1);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .95;
+    transition: all .125s ease-in;
+}
+
+.cell:not(.placed):hover {
+/*     border: 1px solid var(--color5); */
+    color: black;
+    opacity: 1.0;
+    transform: scale(.95);
+    box-shadow: inset 0 0 2.5px;
+}
+#message {
+    text-align: center;
+    padding-top: 3px;
+}
+.winning-cells {
+    
+}
+button {
+    background: var(--color4);
+    border-radius: 5%;
+    border: 2px solid var(--color3)
+}
+button:hover {
+    transform: scale(1.05)
+}
