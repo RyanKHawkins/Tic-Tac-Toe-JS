@@ -53,8 +53,8 @@ function isHorizontalWin() {
 function isDiagonalWin() {
     let diagonal1 = [document.getElementById("1"), document.getElementById("5"), document.getElementById("9")];
     let diagonal2 = [document.getElementById("7"), document.getElementById("5"), document.getElementById("3")];
-    for (let diagonal of  [diagonal1, diagonal2])  {
-        if (diagonal.every(cell => cell.classList.contains("placed") && cell.dataset.symbol == diagonal1[0].dataset.symbol)) {
+    for (let diagonal of [diagonal1, diagonal2])  {
+        if (diagonal.every(cell => cell.classList.contains("placed") && cell.dataset.symbol == diagonal[0].dataset.symbol)) {
             diagonal.forEach(cell => cell.classList.add("winning-cells"));
             return true
         }
