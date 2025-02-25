@@ -28,6 +28,7 @@ function isVerticalWin() {
     const column3Cells = Array.from(document.querySelectorAll("[data-column = '3']"))
     for (let column of [column1Cells, column2Cells, column3Cells]) {
         if (column.every(cell => cell.classList.contains("placed") && cell.dataset.symbol == column[0].dataset.symbol)) {
+            column.forEach(cell => cell.classList.add("winning-cells"))
             winner = ""
             return true
         }
@@ -41,19 +42,24 @@ function isHorizontalWin() {
     const row3 = Array.from(document.querySelectorAll("[data-row = '3']"))
     for (let row of [row1, row2, row3]) {
         if (row.every(cell => cell.classList.contains("placed") && cell.dataset.symbol == row[0].dataset.symbol)) {
+            row.forEach(cell => cell.classList.add("winning-cells"))
             winner = ""
             return true
         }
     }
+    return false
 }
 
 function isDiagonalWin() {
     let diagonal1 = [document.getElementById("1"), document.getElementById("5"), document.getElementById("9")];
     let diagonal2 = [document.getElementById("7"), document.getElementById("5"), document.getElementById("3")];
-    return (
-        diagonal1.every(cell => cell.classList.contains("placed") && cell.dataset.symbol == diagonal1[0].dataset.symbol)
-        || diagonal2.every(cell => cell.classList.contains("placed") && cell.dataset.symbol == diagonal2[0].dataset.symbol)
-    )
+    for (let diagonal of  [diagonal1, diagonal2])  {
+        if (diagonal.every(cell => cell.classList.contains("placed") && cell.dataset.symbol == diagonal1[0].dataset.symbol)) {
+            diagonal.forEach(cell => cell.classList.add("winning-cells"));
+            return true
+        }
+    }
+    return false
 }
 
 for (i = 0; i < cells.length; i++) {
