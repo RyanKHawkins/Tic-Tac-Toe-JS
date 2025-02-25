@@ -131,7 +131,7 @@ h2 {
     border: 1px solid var(--color5);
     font-weight: bold;
     background: var(--color2);
-    opacity: .75;
+    color: var(--color5);
 }
 button {
     background: var(--color4);
